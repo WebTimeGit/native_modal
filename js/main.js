@@ -9,12 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function openModal() {
+
         modalItemBtn.forEach(element => {
             element.addEventListener('click', function (e) {
                 e.preventDefault();
-                targetBtn = this.getAttribute('data-label-modal');
+                targetBtn = element.getAttribute('data-label-modal');
+
                 modal.forEach(element => {
+
                     let modalId = element.id;
+
                     if (targetBtn === modalId) {
                         element.classList.add('active');
                         window.style.overflow = 'hidden';
@@ -37,13 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     for (let i = 0; i < modal.length; i++) {
-
         let elemAttr = modal_content[i].getAttribute('data-important');
 
         if (elemAttr === 'true') {
             document.addEventListener('mousedown', function (e) {
                 let target = e.target;
+
                 let currentModal = target === modal_content[i] || modal_content[i].contains(target);
+
                 if (!currentModal) {
                     modal_content[i].style.transform = 'scale(.99)'
                 }
@@ -51,20 +56,18 @@ document.addEventListener("DOMContentLoaded", function () {
             document.addEventListener('mouseup', function () {
                 modal_content[i].style.transform = 'scale(1)'
             })
-        } else {
-            document.addEventListener('click', function (e) {
+        } if (elemAttr === 'false') {
+           modal[i].addEventListener('click', function (e) {
                 let target = e.target;
                 let currentModal_content = target === modal_content[i] || modal_content[i].contains(target);
                 let currentModalBtn = target === modalItemBtn[i];
-                let currentModal = modal_content[i].parentElement;
 
-                if (!currentModal_content && !currentModalBtn && currentModal.classList.contains('active')) {
-                    currentModal.classList.remove('active');
-                    window.style.overflow = 'initial'
+                if (!currentModal_content && !currentModalBtn) {
+                    this.classList.remove('active')
+                    window.style.overflow = 'initial';
                 }
             })
         }
-
     }
 
     openModal();

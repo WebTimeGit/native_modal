@@ -28,6 +28,7 @@ html,body{
 }
 input,button,textarea{font-family:inherit;}
 
+
 input::-ms-clear{display: none;}
 button{cursor: pointer;}
 button::-moz-focus-inner {padding:0;border:0;}
@@ -86,24 +87,25 @@ img{vertical-align: top;}
     display: flex;
     justify-content: space-evenly;
     background: #ccc;
+    padding: 20px;
 }
 
-.btn {
+.btn2 {
     padding: 10px 15px;
     border: 1px solid #262626;
     margin: 10px 5px;
     border-radius: 5px;
-    color: #262626;
+    color: #262626 !important;
     text-transform: uppercase;
     font-weight: 700;
     box-shadow: 0 0 10px rgba(38,38,38,.5);
     transition: .3s ease-out;
 }
 
-.btn:active {
+.btn2:active {
     transform: scale(.95);
 }
-.btn:hover {
+.btn2:hover {
     transition: .3s ease-out;
     box-shadow: 0 0 0 rgba(38,38,38,0);
 }
